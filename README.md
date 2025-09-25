@@ -1,6 +1,3 @@
-
-
-```markdown
 # ❄️ Frostvakt - Automatisk Frostövervakning
 
 Ett system för att övervaka väder och upptäcka frostrisk med automatiska notifikationer via email och SMS.  
@@ -17,25 +14,23 @@ Frostvakt hämtar väderdata från Open-Meteo API, analyserar frostrisk baserat 
 ## Dataflöde
 
 ```
-
-1. REALTID (var 4\:e timme):
-   main.py → Open-Meteo API → weather\_hourly
+1. REALTID (var 4:e timme):
+   main.py → Open-Meteo API → weather_hourly
    ↓
-   advanced\_frost\_analyzer.py → frost\_warnings (vid frost-risk)
+   advanced_frost_analyzer.py → frost_warnings (vid frost-risk)
    ↓
-   notification\_manager.py → Email + SMS-notifikationer
+   notification_manager.py → Email + SMS-notifikationer
    ↓
    main.py → heartbeat (systemstatus)
 
 2. HISTORISK DATA (manuellt):
-   historical\_data\_fetcher.py → Open-Meteo Archive API → weather\_historical
+   historical_data_fetcher.py → Open-Meteo Archive API → weather_historical
    ↓
-   historical\_analysis.py → historical\_reference + daily\_temperature\_reference
+   historical_analysis.py → historical_reference + daily_temperature_reference
 
 3. DASHBOARD:
-   dashboard\_enhanced.py → Läser alla tabeller → Visar realtid + historiska jämförelser
-
-````
+   dashboard_enhanced.py → Läser alla tabeller → Visar realtid + historiska jämförelser
+```
 
 ---
 
@@ -71,14 +66,14 @@ Frostvakt hämtar väderdata från Open-Meteo API, analyserar frostrisk baserat 
 ```bash
 Python 3.8+
 pip (Python package manager)
-````
+```
 
 ### Installation
 
 1. **Klona repository**
 
 ```bash
-git clone https://github.com/ditt-användarnamn/frostvakt.git
+git clone https://github.com/Dahlmansro/frostvakt.git
 cd frostvakt
 ```
 
@@ -113,7 +108,7 @@ python src/main.py
 
 ---
 
-## ⚙️ Konfiguration
+## Konfiguration
 
 All konfiguration hanteras via `config.yaml`.
 En komplett mall finns i projektet som `config.yaml.example`. Kopiera den och justera med dina egna värden.
@@ -185,7 +180,7 @@ batch\run_frostvakt.cmd
 ```
 frostvakt/
 ├── src/                          
-│   ├── main.py                   # Huvudprogram - ETL-pipeline och datainhämtning
+│   ├── main.py                   # Huvudprogram - ETL-pipeline och datainהämtning
 │   ├── advanced_frost_analyzer.py # Validerad frostalgoritm (F1=0.852)
 │   ├── email_notifier.py         # Email-notifikationssystem med HTML-formatering
 │   ├── sms_notifier.py           # SMS via Twilio
@@ -290,16 +285,16 @@ Täck växter NU!
 
 ---
 
-## 📋 Loggning och Felsökning
+##  Loggning och Felsökning
 
 Frostvakt har två loggnivåer:
 
-**Normal läge (INFO)** – Standard
+**Normal läge (INFO)** — Standard
 
-* Visar viktiga händelser: datainhämtning, frostvarningar, notifikationer
+* Visar viktiga händelser: datainהämtning, frostvarningar, notifikationer
 * Rekommenderas för daglig användning
 
-**Debug-läge (DEBUG)** – För felsökning
+**Debug-läge (DEBUG)** — För felsökning
 
 * Visar all detaljerad information om systemets funktion
 * Aktiveras genom att sätta miljövariabel: `FROSTVAKT_DEBUG=true`
@@ -332,7 +327,7 @@ Loggar sparas i `logs/etl.log` och innehåller tidsstämplar, API-anrop, frostan
 
 ## Historisk Analys
 
-Systemet kan kompletteras med historiska data (2015–2024) för att jämföra prognoser med tidigare mönster.
+Systemet kan kompletteras med historiska data (2015—2024) för att jämföra prognoser med tidigare mönster.
 
 ```bash
 # Hämta historisk data
@@ -378,4 +373,3 @@ Privat användning. Väderdata från Open-Meteo (CC BY 4.0).
 **Skydda dina växter. Få varningar i tid. Använd data.** 🌱❄️
 
 </div>
-```
