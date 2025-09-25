@@ -1,0 +1,35 @@
+# Konfiguration med känslig information
+config.yaml
+
+# Python
+pycache/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Miljövariabler
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Ignorera logs UTOM .gitkeep
+*.log
+logs/*
+!logs/.gitkeep
+
+
+# Cache och temporära filer
+.cache.sqlite
+*.db-journal
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Ignorera allt i data/ UTOM .gitkeep och databasen
+data/*
+!data/.gitkeep
+!data/weather_history_forcast.db

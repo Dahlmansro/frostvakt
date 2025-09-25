@@ -1,0 +1,91 @@
+# Basparametrar för Open-Meteo
+api:
+  base_url: "https://api.open-meteo.com/v1/forecast"
+  params:
+    latitude: 59.06732      
+    longitude: 15.75295
+    hourly: "temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m,precipitation_probability,cloud_cover"
+    timezone: "Europe/Stockholm"
+    forecast_days: 14
+    past_days: 0
+
+# YR (met.no) API konfiguration
+yr_api:
+  enabled: true  # Sätt till false för att bara använda Open-Meteo
+  base_url: "https://api.met.no/weatherapi/locationforecast/2.0"
+  params:
+    latitude: 59.06732     
+    longitude: 15.75295
+  user_agent: 
+  rate_limit_seconds: 60  # Minimum sekunder mellan requests
+  attribution: "Väderdata från MET Norway (CC BY 4.0)"
+
+storage:
+  sqlite_path: "data/weather_history_forcast.db"
+  table_name: "weather_hourly"
+
+run:
+  batch_id_prefix: "etl_run"
+  timeout_seconds: 15
+  max_retries: 3
+  backoff_seconds: 2
+  log_file: "logs/etl.log"
+  
+  # API-prioritering
+  primary_api: "open_meteo"     # "open_meteo" eller "yr"
+  backup_api: "yr"              # Används om primary misslyckas
+  compare_apis: true            # Jämför prognoser från båda
+
+# Email-notifikationer
+email:
+  enabled: true
+  smtp_server: "smtp.gmail.com"
+  smtp_port: 587
+  sender_email: 
+  sender_password: 
+  
+  # Lista över mottagare
+  recipients:
+  
+  # Notifikationsinställningar
+  notifications:
+    send_immediate_warnings: true    # Skicka direkt när frost upptäcks
+    send_daily_summary: false       # Daglig sammanfattning (implementeras senare)
+    min_risk_level: "låg"          # Minsta risknivå för notifikationer: "låg", "medel", "hög"
+    max_warnings_per_day: 3        # Max antal email per dag (spam-skydd)
+    location_name: "Vingåker"     # Platsnamn i meddelanden
+    
+    # Källattribution i emails
+    include_attribution: true
+    attribution_text: "Väderdata från Open-Meteo API och MET Norway (CC BY 4.0)"
+
+  # SMS-notifikationer via Twilio
+sms:
+  enabled: true
+  
+  # Twilio-inställningar 
+  twilio:
+    account_sid: 
+    auth_token: 
+    from_number: 
+  
+  # SMS-regler
+  time_rules:
+    start_time: "07:00"    # Tidigast SMS
+    end_time: "22:00"      # Senast SMS
+  
+  # Mottagare 
+  recipients:
+    - name: "Camilla (test)"
+      number: 
+      enabled: true
+    # Lägg till grannar senare:
+    # - name: "Granne 1"
+    #   number: ""
+    #   enabled: false
+  
+  # SMS-inställningar
+  settings:
+    max_message_length: 160
+    send_test_on_startup: false
+    location_name: "VingåkersFrost"
