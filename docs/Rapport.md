@@ -34,7 +34,7 @@ Systemet är uppbyggt som en **ETL-pipeline** med integrerade komponenter:
 - **Visualisering:** Streamlit-dashboard med plotly-grafer
 - **Automatisering:** Schemalägning via Windows Task Scheduler (var 4:e timme)
 
-![Dashboard](media/image1.png)
+![Dashboard](images/dashboard.png)
 *Bild 1. Dashboard*
 
 ## 3. Resultat
@@ -43,7 +43,7 @@ Systemet är uppbyggt som en **ETL-pipeline** med integrerade komponenter:
 
 8 algoritmer testades mot historiska väderdata. ML-modeller (Random Forest, Gradient Boosting) uppvisade perfekt prestanda medan regelbaserade algoritmer visade varierande resultat:
 
-![Algoritm-resultat](media/image2.png)
+![Algoritm-resultat](images/algoritm-resultat.png) 
 
 Algoritmen **Komplett** valdes framför ML-modeller trots att dessa uppvisade perfekt testprestanda (100% F1-score). Valet motiveras av följande:
 
@@ -77,7 +77,7 @@ Detta förstärker valet av den regelbaserade algoritmen som mer konservativt oc
 - **Databas:** Central lagring av både prognoser och frostvarningar för vidare analys
 - **Praktisk validering:** Systemet varnade korrekt för den första frostnatten i produktionsmiljö, vilket bekräftar algoritmens praktiska tillförlitlighet
 
-![Email-notifiering](media/image3.png)
+![Email-notifiering](images/email-notifiering.png)
 *Bild 2. Exempel på notifiering via mail*
 
 ## 4. Diskussion
