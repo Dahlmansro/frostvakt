@@ -1,7 +1,6 @@
 # ❄️ Frostvakt - Automatisk Frostövervakning
 
 Ett system för att övervaka väder och upptäcka frostrisk med automatiska notifikationer via email och SMS.  
-Systemet är utvecklat som ett proof-of-concept men kan enkelt anpassas för praktisk användning inom trädgård, jordbruk eller forskning.
 
 ---
 
